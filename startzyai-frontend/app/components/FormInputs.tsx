@@ -6,7 +6,7 @@ interface FormInputsProps {
   feature: string;
   comment: string;
   selectedCategory: string;
-  selectedReaction: 'like' | 'dislike' | null;
+  selectedReaction: 'like' | 'dislike' | null;    
   isDropdownOpen: boolean;
   onFeatureChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onCommentChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
