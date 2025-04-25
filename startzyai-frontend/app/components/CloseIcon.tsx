@@ -3,13 +3,13 @@ import React from "react";
 const CloseIcon: React.FC = () => {
   return (
     <svg
-      width="24"
-      height="24"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="icon-close"
-      style={{ width: "24px", height: "24px", opacity: 0.5 }}
+      style={{ width: "16px", height: "16px", opacity: 0.5 }}
     >
       <g opacity="0.5">
         <path

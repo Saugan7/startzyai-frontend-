@@ -13,6 +13,8 @@ interface FormInputsProps {
   onDropdownToggle: () => void;
   onCategorySelect: (category: string) => void;
   onReactionSelect: (reaction: 'like' | 'dislike') => void;
+  onSubmit: () => void;  // Add this new prop
+  isDisabled?: boolean;
 }
 
 function FormInputs({
@@ -21,11 +23,13 @@ function FormInputs({
   selectedCategory,
   selectedReaction,
   isDropdownOpen,
+  isDisabled = false,
   onFeatureChange,
   onCommentChange,
   onDropdownToggle,
   onCategorySelect,
-  onReactionSelect
+  onReactionSelect,
+  onSubmit  // Add this new prop
 }: FormInputsProps) {
   const categories = ["Problem", "Opportunity", "Challenge"];
 
@@ -34,16 +38,18 @@ function FormInputs({
       <input
         type="text"
         placeholder="Enter more feature here.."
-        className="px-2.5 py-2 text-sm bg-white rounded-lg border border-gray-200 border-solid h-[42px] text-neutral-800 text-opacity-40 w-[280px] max-md:w-full max-sm:w-full"
-        value={feature}
+        className={`px-2.5 py-2 text-sm bg-white rounded-lg border border-gray-200 border-solid h-[42px] text-neutral-800 w-[280px] max-md:w-full max-sm:w-full ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        value={feature || ""}
         onChange={onFeatureChange}
+        disabled={isDisabled}
       />
       <input
         type="text"
         placeholder="Add your comments"
-        className="px-2.5 py-2 text-sm bg-white rounded-lg border border-gray-200 border-solid h-[42px] text-neutral-800 text-opacity-40 w-[280px] max-md:w-full max-sm:w-full"
-        value={comment}
+        className={`px-2.5 py-2 text-sm bg-white rounded-lg border border-gray-200 border-solid h-[42px] text-neutral-800 w-[280px] max-md:w-full max-sm:w-full ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        value={comment || ""}
         onChange={onCommentChange}
+        disabled={isDisabled}
       />
       <div className="relative">
         <button 
@@ -102,9 +108,14 @@ function FormInputs({
           <ThumbsDownIcon isSelected={selectedReaction === 'dislike'} />
         </button>
       </div>
-      <div className="flex items-center px-4 py-2.5 rounded-lg border border-gray-200 border-solid bg-stone-100">
+      <button 
+        className={`flex items-center px-4 py-2.5 rounded-lg border border-gray-200 border-solid bg-stone-100 cursor-pointer hover:bg-stone-200 transition-colors ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        onClick={onSubmit}
+        aria-label="Submit"
+        disabled={isDisabled}
+      >
         <TickIcon />
-      </div>
+      </button>
     </div>
   );
 }
