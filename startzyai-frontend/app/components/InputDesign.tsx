@@ -139,7 +139,7 @@ function InputDesign() {
     }
   };
 
-  const handleRemoveCompetitor = (competitorIndex: number) => {
+  const handleRemoveCompetitor = (competitorIndex: number) => {     
     if (competitors.length <= 1) return; // Don't remove if it's the last competitor
     
     const updatedCompetitors = [...competitors];
